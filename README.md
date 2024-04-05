@@ -17,11 +17,27 @@ chmod +x libtorch_download.sh
 
 系统：ubuntu18.04
 
+### 问题说明
 
+在编译的过程中会遇到如下问题
 
-```text
-sudo ln -s /home/lhk/Thirdparty/libtorch/libtorch/lib/libtorch.so /usr/local/lib/libtorch.so
 ```
+/usr/bin/ld: 找不到 -lTorch
+collect2: error: ld returned 1 exit status
+CMakeFiles/feature_training_fbow.dir/build.make:98: recipe for target 'feature_training_fbow' failed
+make[2]: *** [feature_training_fbow] Error 1
+CMakeFiles/Makefile2:104: recipe for target 'CMakeFiles/feature_training_fbow.dir/all' failed
+make[1]: *** [CMakeFiles/feature_training_fbow.dir/all] Error 2
+Makefile:83: recipe for target 'all' failed
+make: *** [all] Error 2
+```
+
+这说明没有找到Torch。
+
+
+
+
+sudo ln -s /home/lhk/Thirdparty/libtorch/libtorch/lib/libtorch.so /usr/local/lib/libtorch.so
 
 sudo ln -s /home/lhk/Thirdparty/libtorch_cpu/lib/libtorch.so /usr/local/lib/libtorch.so
 
