@@ -15,7 +15,8 @@ script_dir=$(cd "$(dirname "$0")" && pwd)
 
 cd lib
 mkdir fbow
-cd ../Thirdparty/fbow
+cd ../
+cd Thirdparty/fbow
 if [ ! -d "build" ]; then
     mkdir build
     cd build
@@ -29,7 +30,7 @@ else
     echo "fbow已经编译完成"
 fi
 
-# 返回到脚本所在的目录
+返回到脚本所在的目录
 cd "$script_dir"
 mkdir build
 cd build

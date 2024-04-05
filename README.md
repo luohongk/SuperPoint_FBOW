@@ -70,6 +70,25 @@ make: *** [all] Error 2
 
 这说明没有找到Torch。这个问题不知道该怎么解决
 
+sudo ln -s /usr/lib/i386-linux-gnu/mesa/libGL.so.1 /usr/lib/i386-linux-gnu/libGL.so
+
+sudo  ln -s /home/lhk/桌面/SuperPoint_FBOW/lib/libtorch/lib/libtorch.so /usr/lib/libtorch.so
+
+```
+export LD_LIBRARY_PATH=/home/lhk/桌面/SuperPoint_FBOW/lib/libtorch/lib:$LD_LIBRARY_PATH
+```
+
+```
+export LD_LIBRARY_PATH=/path/to/library/directory:$LD_LIBRARY_PATH
+```
+
+
+```
+export LD_LIBRARY_PATH=/path/to/library/directory:$LD_LIBRARY_PATH
+```
+
+sudo cp -r /home/lhk/桌面/SuperPoint_FBOW/lib/libtorch /usr/local/lib
+
 ### 图片名称转换说明
 
 需要训练的图片放置在 `imges`文件夹。在进行训练之前需要用 `python`先对 `images`文件夹中的图片重命名。

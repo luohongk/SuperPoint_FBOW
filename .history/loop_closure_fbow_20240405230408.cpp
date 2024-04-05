@@ -1,12 +1,13 @@
 /*
  * @Author: Hongkun Luo
- * @Date: 2024-04-04 21:51:05
+ * @Date: 2024-04-05 17:45:31
  * @LastEditors: Hongkun Luo
  * @Description: 
  * 
  * Hongkun Luo
  */
 #include "fbow.h"
+#include "vocabulary_creator.h"
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/features2d/features2d.hpp>
@@ -31,11 +32,13 @@ namespace fs = std::experimental::filesystem;
 using namespace cv;
 using namespace std;
 using namespace DPLextractor;
-using namespace fbow;
-
-int main( int argc, char** argv )
+// using namespace fbow;
+/***************************************************
+ *根据前面训练的字典计算相似性评分
+ * ************************************************/
+int main(int argc, char **argv)
 {
-// read the image
+    // read the image
     cout << "reading images... " << endl;
     vector<Mat> images;
 
@@ -74,28 +77,19 @@ int main( int argc, char** argv )
         (*spextractor)(image, cv::Mat(), mvKeys, mDescriptors);
         descriptors.push_back(mDescriptors);
     }
-    
-    // 创建字典
-    //训练词点
-    //训练词典的参数
-    fbow::VocabularyCreator::Params params;
-    //fbow::VocabularyCreator::Params params;
-    //叶子节点的个数
-    params.k = 10;
-    //树的高度
-    params.L = 5;
-    //使用的线程数量
-    params.nthreads=1;
-    //最大迭代次数
-    params.maxIters=0;
-    //词典创建工具
-    fbow::VocabularyCreator vocabCat;
-    //词典
-    cout<<"creating vocabulary ... "<<endl;
+    // images :
+    cout << "comparing images with images " << endl;
+    fbow::fBow bowvector1;
     fbow::Vocabulary vocab;
-    vocabCat.create(vocab,descriptors,"hf-net",params);
-    //保存词典
-    vocab.saveToFile("filename");
-    cout<<"done"<<endl;
-    return 0;
+    bowvector1 = vocab.transform(descriptors[1]);
+    for (int j = 0; j < images.size(); j++)
+    {
+        fbow::fBow bowvector2;
+        bowvector2 = vocab.transform(descriptors[j]);
+        // 两个向量评分,调用静态方法
+        double score = fbow::fBow::score(bowvector1, bowvector2);
+        cout << "image 2 " << " vs image " << (j + 1) << " : " << score << endl;
+    }
+    cout << endl;
+    cout << "done." << endl;
 }

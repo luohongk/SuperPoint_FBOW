@@ -31,7 +31,7 @@ namespace fs = std::experimental::filesystem;
 using namespace cv;
 using namespace std;
 using namespace DPLextractor;
-using namespace fbow;
+// using namespace fbow;
 
 int main( int argc, char** argv )
 {
