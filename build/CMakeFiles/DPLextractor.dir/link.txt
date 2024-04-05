@@ -1,2 +1,0 @@
-/usr/bin/ar qc libDPLextractor.a  CMakeFiles/DPLextractor.dir/src/SPextractor.cc.o CMakeFiles/DPLextractor.dir/src/SuperPoint.cc.o
-/usr/bin/ranlib libDPLextractor.a

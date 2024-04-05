@@ -1,5 +1,13 @@
-#include "fbow/fbow.h"
-#include "fbow/vocabulary_creator.h"
+/*
+ * @Author: Hongkun Luo
+ * @Date: 2024-04-05 17:45:31
+ * @LastEditors: Hongkun Luo
+ * @Description: 
+ * 
+ * Hongkun Luo
+ */
+#include "fbow.h"
+#include "vocabulary_creator.h"
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/features2d/features2d.hpp>
@@ -7,8 +15,23 @@
 #include <vector>
 #include <string>
 
+
+#include <torch/torch.h>
+// #include <opencv2/opencv.hpp>
+// #include <iostream>
+#include <stdio.h>
+#include "SPextractor.h"
+#include "vocabulary_creator.h"
+#include "fbow_exports.h"
+#include "cpu.h"
+
+
+#include <string>
+#include <experimental/filesystem>
+namespace fs = std::experimental::filesystem;
 using namespace cv;
 using namespace std;
+using namespace DPLextractor;
 /***************************************************
  *根据前面训练的字典计算相似性评分
  * ************************************************/
@@ -56,6 +79,7 @@ int main(int argc, char **argv)
     // images :
     cout << "comparing images with images " << endl;
     fbow::fBow bowvector1;
+    fbow::Vocabulary vocab;
     bowvector1 = vocab.transform(descriptors[1]);
     for (int j = 0; j < images.size(); j++)
     {
