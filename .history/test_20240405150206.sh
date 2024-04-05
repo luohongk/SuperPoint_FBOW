@@ -10,9 +10,6 @@
 current_dir=$(pwd)
 echo "当前目录的绝对路径是: $current_dir"
 
-# 获取脚本所在的目录路径
-script_dir=$(cd "$(dirname "$0")" && pwd)
-
 cd lib
 mkdir fbow
 cd ../Thirdparty/fbow
@@ -24,13 +21,11 @@ if [ ! -d "build" ]; then
     echo "fbow库编译完成"
     make install
     echo "fbow库安装完成"
-
+    cd ../
 else
     echo "fbow已经编译完成"
 fi
 
-# 返回到脚本所在的目录
-cd "$script_dir"
 mkdir build
 cd build
 cmake ..

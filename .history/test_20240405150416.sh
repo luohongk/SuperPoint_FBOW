@@ -24,13 +24,12 @@ if [ ! -d "build" ]; then
     echo "fbow库编译完成"
     make install
     echo "fbow库安装完成"
-
+    # 返回到脚本所在的目录
+    cd "$script_dir"
 else
     echo "fbow已经编译完成"
 fi
 
-# 返回到脚本所在的目录
-cd "$script_dir"
 mkdir build
 cd build
 cmake ..

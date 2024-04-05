@@ -8,11 +8,8 @@ set( CMAKE_CXX_FLAGS "-std=c++11 -O3" )
 set(TORCH_ROOTDIR "/home/lhk/Thirdparty/libtorch_cpu")
 set(TORCH_ROOTDIR_INCLUDE "/home/lhk/Thirdparty/libtorch_cpu/include")
 set(TORCH_ROOTDIR_LIB "/home/lhk/Thirdparty/libtorch_cpu/lib")
-set(TORCH_SO"/home/lhk/Thirdparty/libtorch_cpu/lib/libtorch.so")
 set(CAFFE2_SO "/home/lhk/Thirdparty/libtorch_cpu/lib/libcaffe2.so")
-set(TORCH_H "/home/lhk/Thirdparty/libtorch_cpu/include/torch/csrc/api/include")
 # /home/lhk/Thirdparty/libtorch_cpu/lib
-
 
 set( FBOW_INCLUDE_DIRS "lib/fbow/include/fbow" )
 set( FBOW_LIBS "lib/fbow/lib/" )  #这里的源代码有误，按这个写
@@ -24,7 +21,7 @@ set( FBOW_LIBS "lib/fbow/lib/" )  #这里的源代码有误，按这个写
 find_package(Torch REQUIRED PATHS "/home/lhk/Thirdparty/libtorch_cpu")
 
 # opencv 
-find_package( OpenCV 3.1 REQUIRED )
+find_package( OpenCV 3 REQUIRED )
 
 # 打印消息
 message(“find_package执行完成“)
@@ -34,12 +31,8 @@ add_library(DPLextractor
 ${PROJECT_SOURCE_DIR}/src/SPextractor.cc
 ${PROJECT_SOURCE_DIR}/src/SuperPoint.cc
 )
-include_directories(DPLextractor
-${TORCH_ROOTDIR_INCLUDE}
-${TORCH_H}
-)
-# link_directories(${TORCH_ROOTDIR_LIB})
-target_link_libraries(DPLextractor Torch)
+link_directories(${TORCH_ROOTDIR_LIB})
+target_link_libraries(DPLextractor Torch ${CAFFE2_SO})
 
 # 规定.h的路径,包含安装的第三方库文件的.h文件
 include_directories(
@@ -63,4 +56,4 @@ ${TORCH_LIBRARIES}
 )
 
 add_executable( feature_training_fbow feature_training_fbow.cpp )
-target_link_libraries( feature_training_fbow -lstdc++fs  DPLextractor "${TORCH_LIBRARIES}")
+target_link_libraries( feature_training_fbow -lstdc++fs  DPLextractor)

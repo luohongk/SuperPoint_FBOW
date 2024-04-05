@@ -21,10 +21,10 @@ set( FBOW_LIBS "lib/fbow/lib/" )  #这里的源代码有误，按这个写
 # 寻找库文件
 # torch
 # 设置你自己电脑上安装的libtorch的路径
-find_package(Torch REQUIRED PATHS "/home/lhk/Thirdparty/libtorch_cpu")
+# find_package(Torch REQUIRED PATHS "/home/lhk/Thirdparty/libtorch_cpu")
 
 # opencv 
-find_package( OpenCV 3.1 REQUIRED )
+find_package( OpenCV 3 REQUIRED )
 
 # 打印消息
 message(“find_package执行完成“)
@@ -39,7 +39,7 @@ ${TORCH_ROOTDIR_INCLUDE}
 ${TORCH_H}
 )
 # link_directories(${TORCH_ROOTDIR_LIB})
-target_link_libraries(DPLextractor Torch)
+target_link_libraries(DPLextractor)
 
 # 规定.h的路径,包含安装的第三方库文件的.h文件
 include_directories(
@@ -63,4 +63,4 @@ ${TORCH_LIBRARIES}
 )
 
 add_executable( feature_training_fbow feature_training_fbow.cpp )
-target_link_libraries( feature_training_fbow -lstdc++fs  DPLextractor "${TORCH_LIBRARIES}")
+target_link_libraries( feature_training_fbow -lstdc++fs  DPLextractor)

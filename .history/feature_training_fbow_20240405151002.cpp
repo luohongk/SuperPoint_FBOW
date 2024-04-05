@@ -6,7 +6,7 @@
  * 
  * Hongkun Luo
  */
-#include "DBoW3.h"
+#include "fbow.h"
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/features2d/features2d.hpp>
@@ -19,14 +19,14 @@
 // #include <opencv2/opencv.hpp>
 // #include <iostream>
 #include <stdio.h>
-#include "../include/SPextractor.h"
+#include "SPextractor.h"
 
 #include <string>
 #include <experimental/filesystem>
 namespace fs = std::experimental::filesystem;
 using namespace cv;
 using namespace std;
-using namespace ORB_SLAM2;
+using namespace DPLextractor;
 
 int main( int argc, char** argv )
 {
@@ -71,12 +71,26 @@ int main( int argc, char** argv )
     }
     
     // 创建字典
+    //训练词点
+    //训练词典的参数
+    fbow::VocabularyCreator::Params params;
+    //fbow::VocabularyCreator::Params params;
+    //叶子节点的个数
+    params.k = 10;
+    //树的高度
+    params.L = 5;
+    //使用的线程数量
+    params.nthreads=1;
+    //最大迭代次数
+    params.maxIters=0;
+    //词典创建工具
+    fbow::VocabularyCreator vocabCat;
+    //词典
     cout<<"creating vocabulary ... "<<endl;
-    DBoW3::Vocabulary vocab;
-    vocab.create( descriptors );
-    cout<<"vocabulary info: "<<vocab<<endl;
-    vocab.save( "vocabulary.yml.gz" );
+    fbow::Vocabulary vocab;
+    vocabCat.create(vocab,descriptors,"hf-net",params);
+    //保存词典
+    vocab.saveToFile("filename");
     cout<<"done"<<endl;
-      
     return 0;
 }

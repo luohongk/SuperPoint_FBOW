@@ -24,7 +24,7 @@ set( FBOW_LIBS "lib/fbow/lib/" )  #这里的源代码有误，按这个写
 find_package(Torch REQUIRED PATHS "/home/lhk/Thirdparty/libtorch_cpu")
 
 # opencv 
-find_package( OpenCV 3.1 REQUIRED )
+find_package( OpenCV 3 REQUIRED )
 
 # 打印消息
 message(“find_package执行完成“)
@@ -63,4 +63,4 @@ ${TORCH_LIBRARIES}
 )
 
 add_executable( feature_training_fbow feature_training_fbow.cpp )
-target_link_libraries( feature_training_fbow -lstdc++fs  DPLextractor "${TORCH_LIBRARIES}")
+target_link_libraries( feature_training_fbow -lstdc++fs  DPLextractor ${TORCH_SO})

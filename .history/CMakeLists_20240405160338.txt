@@ -21,7 +21,7 @@ set( FBOW_LIBS "lib/fbow/lib/" )  #这里的源代码有误，按这个写
 # 寻找库文件
 # torch
 # 设置你自己电脑上安装的libtorch的路径
-find_package(Torch REQUIRED PATHS "/home/lhk/Thirdparty/libtorch_cpu")
+find_package(Torch REQUIRED PATHS "/usr/local/libtorch")
 
 # opencv 
 find_package( OpenCV 3.1 REQUIRED )
