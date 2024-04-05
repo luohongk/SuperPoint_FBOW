@@ -3,14 +3,15 @@ project(TRAIN_DBOW3)
 
 set( CMAKE_BUILD_TYPE "Release" )
 set( CMAKE_CXX_FLAGS "-std=c++11 -O3" )
+cmake_policy(SET CMP0015 NEW)
 
 # 设置你自己电脑上安装的libtorch的路径
-set(TORCH_ROOTDIR "/home/lhk/Thirdparty/libtorch_cpu")
-set(TORCH_ROOTDIR_INCLUDE "/home/lhk/Thirdparty/libtorch_cpu/include")
-set(TORCH_ROOTDIR_LIB "/home/lhk/Thirdparty/libtorch_cpu/lib")
-set(TORCH_SO"/home/lhk/Thirdparty/libtorch_cpu/lib/libtorch.so")
-set(CAFFE2_SO "/home/lhk/Thirdparty/libtorch_cpu/lib/libcaffe2.so")
-set(TORCH_H "/home/lhk/Thirdparty/libtorch_cpu/include/torch/csrc/api/include")
+set(TORCH_ROOTDIR "/home/lhk/Thirdparty/libtorch")
+set(TORCH_ROOTDIR_INCLUDE "/home/lhk/Thirdparty/libtorch/include")
+set(TORCH_ROOTDIR_LIB "/home/lhk/Thirdparty/libtorch/lib")
+set(TORCH_SO"/home/lhk/Thirdparty/libtorch/lib/libtorch.so")
+set(CAFFE2_SO "/home/lhk/Thirdparty/libtorch/lib/libcaffe2.so")
+set(TORCH_H "/home/lhk/Thirdparty/libtorch/include/torch/csrc/api/include")
 # /home/lhk/Thirdparty/libtorch_cpu/lib
 
 
@@ -21,7 +22,7 @@ set( FBOW_LIBS "lib/fbow/lib/" )  #这里的源代码有误，按这个写
 # 寻找库文件
 # torch
 # 设置你自己电脑上安装的libtorch的路径
-find_package(Torch REQUIRED PATHS "/home/lhk/Thirdparty/libtorch_cpu")
+find_package(Torch REQUIRED PATHS "/home/lhk/Thirdparty/libtorch/share/cmake/Torch")
 
 # opencv 
 find_package( OpenCV 3.1 REQUIRED )
