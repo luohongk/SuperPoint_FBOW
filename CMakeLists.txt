@@ -64,3 +64,6 @@ ${TORCH_LIBRARIES}
 
 add_executable( feature_training_fbow feature_training_fbow.cpp )
 target_link_libraries( feature_training_fbow -lstdc++fs  DPLextractor "${TORCH_LIBRARIES}")
+
+add_executable( loop_closure_fbow loop_closure_fbow.cpp )
+target_link_libraries( loop_closure_fbow -lstdc++fs  DPLextractor "${TORCH_LIBRARIES}")
