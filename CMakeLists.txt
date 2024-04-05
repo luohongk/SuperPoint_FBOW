@@ -50,6 +50,13 @@ link_directories( DPLextractor ${TORCH_ROOTDIR_LIB})
 target_link_libraries(DPLextractor ${TORCH_LIBRARIES} ${OpenCV_LIBS})
 
 
+
+include_directories(
+${OpenCV_INCLUDE_DIRS}
+${FBOW_INCLUDE_DIRS}
+${TORCH_ROOTDIR_INCLUDE}
+)
+
 link_directories(
 ${OpenCV_LIBS}
 ${TORCH_SO}
