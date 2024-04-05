@@ -5,6 +5,7 @@ set( CMAKE_BUILD_TYPE "Release" )
 set( CMAKE_CXX_FLAGS "-std=c++11 -O3" )
 cmake_policy(SET CMP0015 NEW)
 
+
 # 设置你自己电脑上安装的libtorch的路径
 set(TORCH_ROOTDIR "/home/lhk/Thirdparty/libtorch")
 set(TORCH_ROOTDIR_INCLUDE "/home/lhk/Thirdparty/libtorch/include")
@@ -22,13 +23,11 @@ set( FBOW_LIBS "lib/fbow/lib/" )  #这里的源代码有误，按这个写
 # 寻找库文件
 # torch
 # 设置你自己电脑上安装的libtorch的路径
-find_package(Torch REQUIRED PATHS "/home/lhk/Thirdparty/libtorch/share/cmake/Torch")
+find_package(Torch REQUIRED PATHS ${TORCH_INSTALL_PREFIX})
 
 # opencv 
 find_package( OpenCV 3.1 REQUIRED )
 
-# 打印消息
-message(“find_package执行完成“)
 
 # 生成静态库文件
 add_library(DPLextractor

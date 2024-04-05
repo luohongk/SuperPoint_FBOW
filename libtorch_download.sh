@@ -7,7 +7,7 @@
  # Hongkun Luo
 ### 
 # 下载第三方库libtorch(已经编译过的)
-cd Thirdparty
+cd lib
 if [ ! -d "libtorch" ]; then
     echo "正在下载libtorch ..."
     wget https://github.com/luohongk/tool_and_lib/releases/download/libtorch/libtorch.zip

@@ -211,6 +211,9 @@ TRAIN_DBOW3_SOURCE_DIR:STATIC=/home/lhk/桌面/SuperPoint_FBOW
 //The directory containing a CMake configuration file for Torch.
 Torch_DIR:PATH=/home/lhk/Thirdparty/libtorch/share/cmake/Torch
 
+//The directory containing a CMake configuration file for torch.
+torch_DIR:PATH=torch_DIR-NOTFOUND
+
 
 ########################
 # INTERNAL cache entries
