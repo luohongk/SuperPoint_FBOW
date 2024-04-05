@@ -16,11 +16,11 @@ cd ../Thirdparty/fbow
 if [ ! -d "build" ]; then
     mkdir build
     cd build
-    cmake -D CMAKE_INSTALL_PREFIX="$current_dir/lib/fbow"  ..
+    cmake -D CMAKE_INSTALL_PREFIX="$current_dir/lib"  ..
     make -j4
     echo "fbow库编译完成"
     make install
-    echo "fbow库安装完成"
+    echo "fbow库编译完成"
 else
     echo "fbow已经编译完成"
 fi
