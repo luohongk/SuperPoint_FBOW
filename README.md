@@ -14,35 +14,58 @@ fbow(参考官方仓库：https://github.com/rmsalinas/fbow)
 
 如果图片名称都转换完毕了，那就开始如下步骤
 
+1. 下载仓库
+
 ```
 git clone https://github.com/luohongk/SuperPoint_FBOW.git
 cd SuperPoint_FBOW
 ```
 
-安装libtorch库
+2. 安装libtorch库
 
 ```
+项目根目录执如下命令
 chmod +x libtorch_download.sh
 ./libtorch_download.sh
 ```
 
-编译superpoint
+3. 编译superpoint
+
+在编译superpoint之前，请你先将目录SuperPoint_FBOW/superpoint/src/SPextractor.cc文件中的第152行的权重路径换乘superpoint.pt在你电脑上的绝对路径。
 
 ```
+项目根目录执如下命令
 chmod +x build_superpoint.sh
 ./build_superpoint.sh
 ```
 
 编译完成后项目根目录superpoint下有一个build文件夹。build文件夹下有一个libsuperpoint.so。把libsuperpoint.so复制到（根目录/utils/superpoint)。
 
-编译
+4. 编译main入口文件
+
+在编译之前，请你将SuperPoint_FBOW/utils/fbow_create_voc_step0.cpp文件中的一部分代码设置成你想要的路径。`   string outputfilename ="/home/lhk/data/output";`
 
 ```
+    string des="descriptor";
+    string outputfilename ="/home/lhk/data/output";
+    // 将特征保存到文件
+    std::cerr << "saving to " <<outputfilename<< std::endl;
+    saveToFile(outputfilename,descriptors,des);
+    return 0;
+```
+
+```
+项目根目录执如下命令
 chmod +x run.sh
 ./run.sh
 ```
 
-（目前编译的时候有点小问题，说是fbow的两个函数链接不上，气死我了）。
+5. 运行
+
+```
+cd build/utils
+./fbow_create_voc_step0 
+```
 
 ### 系统说明
 

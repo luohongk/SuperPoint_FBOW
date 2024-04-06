@@ -165,7 +165,7 @@ int main(int argc, char **argv)
     vector<Mat> images;
 
     // 获得文件夹中图片的数量
-    std::string folderPath = "renamed_images"; // 替换为你的文件夹路径
+    std::string folderPath = "/home/lhk/workspace/SuperPoint_FBOW/utils/renamed_images"; // 替换为你的文件夹路径
 
     int pngCount = 0;
 
@@ -203,9 +203,10 @@ int main(int argc, char **argv)
     // vector<cv::Mat> features = loadFeatures(images, descriptor);
     
     string des="descriptor";
+    string outputfilename ="/home/lhk/data/output";
     // 将特征保存到文件
-    std::cerr << "saving to " << argv[0] << std::endl;
-    saveToFile(argv[0],descriptors,des);
+    std::cerr << "saving to " <<outputfilename<< std::endl;
+    saveToFile(outputfilename,descriptors,des);
 
     return 0;
 }

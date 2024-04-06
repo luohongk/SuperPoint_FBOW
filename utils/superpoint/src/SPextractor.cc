@@ -149,7 +149,7 @@ SPextractor::SPextractor(int _nfeatures, float _scaleFactor, int _nlevels,
     iniThFAST(_iniThFAST), minThFAST(_minThFAST)
 {
     model = make_shared<SuperPoint>();
-    torch::load(model, "../weight/superpoint.pt");
+    torch::load(model, "/home/lhk/workspace/SuperPoint_FBOW/utils/superpoint/weight/superpoint.pt");
 
 
     mvScaleFactor.resize(nlevels);
