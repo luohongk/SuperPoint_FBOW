@@ -6,7 +6,7 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/superpoint/include)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/superpoint/libtorch/include/torch/csrc/api/include/)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/superpoint/libtorch/include/)
 # /home/lhk/workspace/SuperPoint_FBOW/superpoint/libtorch/include/torch/csrc/api/include/torch
-SET(SUPERPOINT_LIB ${CMAKE_CURRENT_SOURCE_DIR}/superpoint/libsuperpoint.a)
+SET(SUPERPOINT_LIB ${CMAKE_CURRENT_SOURCE_DIR}/superpoint/libsuperpoint.so)
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/src )
 
 ADD_EXECUTABLE(fbow_create_voc_step0 fbow_create_voc_step0.cpp dirreader.h)

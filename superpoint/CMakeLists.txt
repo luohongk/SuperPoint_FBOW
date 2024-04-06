@@ -31,11 +31,11 @@ ${OpenCV_LIBS}
 )
 
 # 编译成静态库
-add_library(superpoint STATIC ${SOURCES})
+add_library(superpoint SHARED ${SOURCES})
 
 # 如果有其他需要链接的库，可以在这里添加
-target_link_libraries(superpoint Torch)
+target_link_libraries(superpoint ${TORCH_LIBRARIES})
 
 # 如果你想将生成的库安装到指定目录，可以取消下面两行的注释，并根据需要调整路径
-install(TARGETS superpoint ARCHIVE DESTINATION ${INSTALL_DIR}/lib)
+install(TARGETS superpoint LIBRARY DESTINATION ${INSTALL_DIR}/lib)
 install(DIRECTORY include/ DESTINATION ${INSTALL_DIR}/include)
