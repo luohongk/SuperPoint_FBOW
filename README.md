@@ -1,10 +1,20 @@
+<!--
+ * @Author: Hongkun Luo
+ * @Date: 2024-04-06 20:33:08
+ * @LastEditors: Hongkun Luo
+ * @Description: 
+ * 
+ * Hongkun Luo
+-->
 # SuperPoint_FBOW
 
 本项目是通过SuerPoint与fbow来训练一个基于深度学习词袋
 
 ## 使用的教学视频
 
-<iframe src="https://player.bilibili.com/player.html?aid=1702893113&bvid=BV1TT421m7Tj&cid=1496085889&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<a href="https://www.bilibili.com/video/BV1TT421m7Tj/?spm_id_from=333.999.0.0&vd_source=3d68818394dd7dd28a8186a3fe19fee5">
+  <img src="https://s2.loli.net/2024/04/06/gUmPGZ8sYcoL9M1.jpg" alt="B站教学视频">
+</a>
 
 ## 第三方库依赖
 
