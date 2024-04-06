@@ -7,7 +7,23 @@
 #include "vocabulary_creator.h"
 // OpenCV
 #include <opencv2/core/core.hpp>
+#include <stdio.h>
+#include "SPextractor.h"
+#include "vocabulary_creator.h"
+#include "fbow_exports.h"
+#include "cpu.h"
+#include <torch/torch.h>
+
+#include <string>
+#include <experimental/filesystem>
+namespace fs = std::experimental::filesystem;
+using namespace cv;
+using namespace DPLextractor;
+
+
 using namespace std;
+
+
 
 //command line parser
 class CmdLineParser{int argc; char **argv; public: CmdLineParser(int _argc,char **_argv):argc(_argc),argv(_argv){}  bool operator[] ( string param ) {int idx=-1;  for ( int i=0; i<argc && idx==-1; i++ ) if ( string ( argv[i] ) ==param ) idx=i;    return ( idx!=-1 ) ;    } string operator()(string param,string defvalue="-1"){int idx=-1;    for ( int i=0; i<argc && idx==-1; i++ ) if ( string ( argv[i] ) ==param ) idx=i; if ( idx==-1 ) return defvalue;   else  return ( argv[  idx+1] ); }};

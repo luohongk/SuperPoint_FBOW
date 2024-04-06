@@ -7,17 +7,8 @@ current_dir=$(pwd)
  # 
  # Hongkun Luo
 ### 
-echo "当前目录的绝对路径是: $current_dir"
-
-# 获取脚本所在的目录路径
-script_dir=$(cd "$(dirname "$0")" && pwd)
-
-if [ ! -d "build" ]; then
-    mkdir build
-    cd build
-    cmake ..
-    make -j4
-    echo "fbow已经编译完成"
-else
-    echo "fbow已经编译完成"
-fi
+mkdir build
+cd build
+cmake ..
+make -j4
+echo "可执行文件已经编译完成"

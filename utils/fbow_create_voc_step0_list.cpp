@@ -14,6 +14,19 @@
 #include <opencv2/xfeatures2d.hpp>
 #endif
 
+#include <stdio.h>
+#include "SPextractor.h"
+#include "vocabulary_creator.h"
+#include "fbow_exports.h"
+#include "cpu.h"
+
+
+#include <string>
+#include <experimental/filesystem>
+namespace fs = std::experimental::filesystem;
+using namespace cv;
+using namespace DPLextractor;
+
 using namespace fbow;
 using namespace std;
 
