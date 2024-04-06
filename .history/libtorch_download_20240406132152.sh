@@ -24,7 +24,7 @@ else
     echo "libtorch文件夹已存在，跳过下载和解压步骤。"
 fi
 
-cd  utils/superpoint
+cd  utils
 if [ ! -d "libtorch" ]; then
     echo "正在下载libtorch ..."
     wget https://download.pytorch.org/libtorch/cpu/libtorch-shared-with-deps-1.0.1.zip 
