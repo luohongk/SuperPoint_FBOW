@@ -43,11 +43,13 @@ chmod +x build_superpoint.sh
 
 4. 编译main入口文件
 
-在编译之前，请你将SuperPoint_FBOW/utils/fbow_create_voc_step0.cpp文件中的一部分代码设置成你想要的路径。`   string outputfilename ="/home/lhk/data/output";`
+在编译之前，请你将SuperPoint_FBOW/utils/fbow_create_voc_step0.cpp文件中的一部分代码设置成你想要的路径。`   string outputfilename ="/home/lhk/data/output/superpoint.fbow";这里注意一定要有superpoint.fbow!!!`
+
+第168行 `std::stringfolderPath="/home/lhk/workspace/SuperPoint_FBOW/utils/renamed_images"; // 替换为你的训练图片的文件夹路径`
 
 ```
     string des="descriptor";
-    string outputfilename ="/home/lhk/data/output";
+    string outputfilename ="/home/lhk/data/output/superpoint.fbow";
     // 将特征保存到文件
     std::cerr << "saving to " <<outputfilename<< std::endl;
     saveToFile(outputfilename,descriptors,des);
@@ -60,12 +62,19 @@ chmod +x run.sh
 ./run.sh
 ```
 
-5. 运行
+5. 运行输出深度学习描述子（当然，这里也可以输出深度学习特征点，具体就看看代码)
 
 ```
 cd build/utils
 ./fbow_create_voc_step0 
 ```
+
+6. 输出词袋
+
+   ```
+   ./fbow_create_voc_step1 /home/lhk/workspace/SuperPoint_FBOW/output/superpoint.fbow /home/lhk/workspace/SuperPoint_FBOW/output/superpointVoc.txt
+   ```
+
 
 ### 系统说明
 

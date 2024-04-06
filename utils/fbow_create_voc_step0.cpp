@@ -118,6 +118,7 @@ vector<cv::Mat> loadFeatures(std::vector<string> path_to_images, string descript
 void saveToFile(string filename, const vector<cv::Mat> &features, std::string desc_name, bool rewrite = true)
 {
 
+    cout<<filename<<endl;
     // 测试文件是否存在
     if (!rewrite)
     {
@@ -126,6 +127,7 @@ void saveToFile(string filename, const vector<cv::Mat> &features, std::string de
             std::runtime_error("ERROR::: Output File " + filename + " already exists!!!!!");
     }
     std::ofstream ofile(filename, std::ios::binary);
+    cout<<"输出文件夹是否能被打开:"<<ofile.is_open()<<endl;
     if (!ofile.is_open())
     {
         cerr << "could not open output file" << endl;
@@ -181,11 +183,13 @@ int main(int argc, char **argv)
             }
         }
     }
-
+    
+    cout<<"训练的图片总数目为："<<pngCount<<endl;
     for (int i = 0; i < pngCount; i++)
     {
-        string path = "./renamed_images/" + to_string(i + 1) + ".png";
-        images.push_back(imread(path));
+        string path = folderPath+ "/"+to_string(i + 1) + ".png";
+        images.push_back(imread(path,CV_8UC1));
+        cout<<"第"<<i<<"张图片读取成功!"<<endl;
     }
 
     // dpl Features
@@ -202,10 +206,12 @@ int main(int argc, char **argv)
 
     // vector<cv::Mat> features = loadFeatures(images, descriptor);
     
-    string des="descriptor";
-    string outputfilename ="/home/lhk/data/output";
+    string des="superpoint";
+    string outputfilename ="/home/lhk/workspace/SuperPoint_FBOW/output/superpoint.fbow";
     // 将特征保存到文件
     std::cerr << "saving to " <<outputfilename<< std::endl;
+
+    // cout<<descriptors<<endl;
     saveToFile(outputfilename,descriptors,des);
 
     return 0;
