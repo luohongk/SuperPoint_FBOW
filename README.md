@@ -6,6 +6,7 @@
  * 
  * Hongkun Luo
 -->
+
 # SuperPoint_FBOW
 
 本项目是通过SuerPoint与fbow来训练一个基于深度学习词袋
@@ -75,8 +76,8 @@ fbow(参考官方仓库：https://github.com/rmsalinas/fbow)
 
    ```
    项目根目录执如下命令
-   chmod +x run.sh
-   ./run.sh
+   cd build/utils
+   ./fbow_create_voc_step0
    ```
 6. 输出词袋
 
