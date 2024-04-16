@@ -1,15 +1,15 @@
 from os import walk
 import os
-DBDIR = "Database dir" #the dir where images reside e.g. C:/database
-DBNAME = "Databasename" #e.g. database (in the line above)
-CODEDIR = "" #e.g. H:/fbow-windows/build/bin/Release
-DESCRIPTOR = "orb"
-RESULTSDIR = ""#e.g. "C:/FBoWResults"
-OUTPUT = RESULTSDIR + "/" + DESCRIPTOR + DBNAME
+DBDIR = "/home/lhk/workspace/SuperPoint_FBOW/utils/renamed_images" #the dir where images reside e.g. C:/database
+DBNAME = "euroc" #e.g. database (in the line above)
+CODEDIR = "/home/lhk/workspace/SuperPoint_FBOW/build/utils" #e.g. H:/fbow-windows/build/bin/Release
+DESCRIPTOR = "superpoint"
+RESULTSDIR = "/home/lhk/workspace/SuperPoint_FBOW/output"#e.g. "C:/FBoWResults"
+OUTPUT = RESULTSDIR
 MKDIRCMD = "mkdir " + OUTPUT
-FeaturesExtractCmd = CODEDIR + "/" + "fbow_create_voc_step0.exe " + DESCRIPTOR + " " + OUTPUT + "/features"
-VocabCreateCmd = CODEDIR + "/" + "fbow_create_voc_step1.exe " + OUTPUT + "/features " + OUTPUT + "/out.fbow"
-ImageMatchingCmd = CODEDIR + "/" + "image_matching.exe " + OUTPUT + "/out.fbow " + OUTPUT + " "
+FeaturesExtractCmd = CODEDIR + "/" + "fbow_create_voc_step0"
+VocabCreateCmd = CODEDIR + "/" + "fbow_create_voc_step1" + " "+OUTPUT + "/superpoint.fbow" +" "+OUTPUT + "/superpointVoc.fbow"
+ImageMatchingCmd = CODEDIR + "/" + "image_matching" +" "+OUTPUT + "/superpointVoc.fbow" +" "+OUTPUT + ""
 
 imagesFileName = ""
 i = 1
